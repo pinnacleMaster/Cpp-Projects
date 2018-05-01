@@ -1,25 +1,26 @@
-#include "TowerOfHanoi"
+#include "TowerOfHanoi.hpp"
+#include <string>
 TowerOfHanoi::TowerOfHanoi(){
 	numberOfDisks = 0;
-	startPos = 'A';
-	endPos = 'C';
+	startPeg = 'A';
+	endPeg = 'C';
 }
 
 TowerOfHanoi::TowerOfHanoi(const int& n){
 	numberOfDisks = n;
-	startPos = 'A';
-	endPos = 'C';
+	startPeg = 'A';
+	endPeg = 'C';
 }
 
-TowerOfHanoi::TowerOfHanoi(const int& n, const char& _startPos, const char& _endPos){
+TowerOfHanoi::TowerOfHanoi(const int& n, const char& _startPeg, const char& _endPeg){
 	numberOfDisks = n;
-	startPos = _startPos;
-	endPos = _endPos;
+	startPeg = _startPeg;
+	endPeg = _endPeg;
 }
 
 std::vector<std::string> TowerOfHanoi::generateSolution()
 {
-	solve(numberOfDisks,startPos, endPos);
+	solve(numberOfDisks,startPeg, endPeg);
 	return moves;
 }
 
@@ -45,15 +46,15 @@ void TowerOfHanoi::solve(const int& n, const char& currPeg,const char& toPeg){
 	}
 }
 
-void TowerOfHanoi::move(const int& pegNum, const char& toPeg){
-	std::string c = std::to_string(pegNum);
+void TowerOfHanoi::move(const int& diskNum, const char& toPeg){
+	std::string c = std::to_string(diskNum);
 	std::string s = "Move tile " + c + " to peg ";
 	s.push_back(toPeg);
 	moves.push_back(s);
 }
 
 char TowerOfHanoi::remove(const char& peg1, const char& peg2){
-	char peg;
+	char peg ='\0';
 	if ((peg1 == 'A' && peg2 == 'B') || (peg1 == 'B' && peg2 == 'A')) { peg = 'C';}
 	else if ((peg1 == 'A' && peg2 == 'C')  || (peg1 == 'C' && peg2 == 'A')) { peg = 'B';}
 	else if ((peg1 == 'B' && peg2 == 'C') || (peg1 == 'C' && peg2 == 'B')) { peg = 'A';}
