@@ -31,14 +31,14 @@ void TowerOfHanoi::solve(const int& n, const char& currPeg,const char& toPeg){
 	}
 	else
 	{
-		char nextPeg = remove(currPeg, toPeg); // "ABC" - could be a string
+		char nextPeg = remove(currPeg, toPeg);
 		if(n == 1){
 			move(1, toPeg);
 			return;
 		}
 		else
 		{
-			solve(n-1, currPeg, nextPeg); // * I dont know what currPeg msut be
+			solve(n-1, currPeg, nextPeg); 
 			move(n, toPeg);
 			solve(n-1, nextPeg, toPeg);
 		}
