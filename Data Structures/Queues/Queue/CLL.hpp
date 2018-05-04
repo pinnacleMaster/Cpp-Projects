@@ -75,4 +75,5 @@ void CLL<T>:: remove(){
 		cursor->next = oldCursor->next;
 	delete oldCursor;
 }
+
 #endif /* CLL_HPP_ */

@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : CLL.cpp
+// Name        : main.cpp
 // Author      :
 // Version     :
 // Copyright   : Your copyright notice
@@ -8,7 +8,11 @@
 
 #include "tests.hpp"
 
-int main() {
+int main(){
+	std::cout << "Testing general queue methods: " << std::endl;
 	test1();
-	return 0;
+	std::cout << "Testing exception handling of queue methods: " << std::endl;
+	test2();
+
+  return 0;
 }
