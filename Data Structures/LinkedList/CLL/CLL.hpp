@@ -19,14 +19,14 @@ public:
 private:
 	typedef CNode* CNodePtr;
 public:
-	CLL(); 										// constructor
-	~CLL(); 									// destructor
-	bool empty();							// checks if cll is empty
-	const T& front() const;  	// returns element in front of cursor
-	const T& back() const;		// returns element at rear of cursor
-	void advance();						// advance the cursor to the element in front
-	void add(const T& e); 		// add element at the front of the cursor
-	void remove();						// removes element at the front of the cursor
+	CLL(); 					// constructor
+	~CLL(); 					// destructor
+	bool empty();			// checks if cll is empty
+	const T& front() const;  // returns element in front of cursor
+	const T& back() const;	// returns element at rear of cursor
+	void advance();			// advance the cursor to the element in front
+	void add(const T& e); 	// add element at the front of the cursor
+	void remove();			// removes element at the front of the cursor
 private:
 	CNodePtr cursor;
 };
