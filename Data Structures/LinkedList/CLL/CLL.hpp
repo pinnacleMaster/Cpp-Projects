@@ -1,5 +1,13 @@
-#ifndef CLL_HPP
-#define CLL_HPP
+/*
+ * CLL.hpp
+ *
+ *  Created on: May 3, 2018
+ *      Author: takudzwamhonde
+ */
+
+#ifndef CLL_HPP_
+#define CLL_HPP_
+
 
 template<typename T>
 class CLL{
@@ -9,12 +17,12 @@ public:
 		CNode* next;
 		CNode(): elem(), next(nullptr) {}
 	};
-private: 
+private:
 	typedef CNode* CNodePtr;
 public:
 	CLL(); // constructor
 	~CLL(); // destructr
-	bool empty(); 
+	bool empty();
 	const T& front();
 	const T& back();
 	void advance();
@@ -28,7 +36,7 @@ template <typename T>
 CLL<T>:: CLL(): cursor(nullptr) {}
 
 template <typename T>
-CLL<T>:: ~CLL(): { while(!empty()) remove();}
+CLL<T>:: ~CLL() { while(!empty()) remove();}
 
 template <typename T>
 bool CLL<T>:: empty() { return cursor==nullptr; }
@@ -40,27 +48,33 @@ template <typename T>
 const T& CLL<T>:: back() { return cursor->elem; }
 
 template <typename T>
-void CLL<T> advance() { cursor = cursor->next; }
+void CLL<T>::advance() { cursor = cursor->next; }
 
-template <typename T> 
+template <typename T>
 void CLL<T>:: add(const T& e){
 	CNodePtr v = new CNode;
 	v->elem = e;
-	if(empty)
-		cursor->next = v; // want to see how this turns out
+	if(empty())
+	{
+		v->next = v;
+		cursor = v;
+	}
 	else
-		cursor->next->next = v; // want to see how this turns out
+	{
+		v->next = cursor->next;
+		cursor->next = v;
+	}
 }
 
-template <typename T> 
+template <typename T>
 void CLL<T>:: remove(){
 
 	CNodePtr oldCursor = cursor->next;
 	if(oldCursor == cursor)
 		cursor = nullptr;
-	else 
-		cursor->next = old->next;
-	delete old;
+	else
+		cursor->next = oldCursor->next;
+	delete oldCursor;
 }
 
-#endif /* CLL_HPP */
+#endif /* CLL_HPP_ */
